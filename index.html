@@ -7,7 +7,7 @@
     <title>Document</title>
     <script>
         /*Computer will generate a random number that will be equal to the result of either Rock, Paper, or Scissor */
-        function computerPlayer() {
+        function computerPlay() {
             let randomNumber = Math.floor(Math.random()*3);
             if (randomNumber === 0) {
                 return 'Rock';
@@ -16,9 +16,22 @@
             } else if (randomNumber === 2) {
                 return 'Scissors';
             }
-        }
+        };
+        
         /* Program will take the input of the user player*/
-
+        var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
+        var makeChoiceLower = makeChoice.toLowerCase();
+        function playerSelection() {
+            if (makeChoiceLower === "rock") {
+            return 'Rock';
+        } else if (makeChoiceLower === "paper") {
+            return 'Paper';
+        } else if (makeChoiceLower === "scissors") {
+            return 'Scissors';
+        } else {
+             alert('You have made an invalid selection. Please choose again.');
+        }};
+        
         /*The user input and the computer result will be compared and the result will be printed*/
     </script>
 </head>
