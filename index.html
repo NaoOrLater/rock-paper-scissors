@@ -7,9 +7,15 @@
     <title>Document</title>
     <script>
         /*Computer will generate a random number that will be equal to the result of either Rock, Paper, or Scissor */
-        function computerPlay() {
+        function computerPlayer() {
             let randomNumber = Math.floor(Math.random()*3);
-            
+            if (randomNumber === 0) {
+                return 'Rock';
+            } else if (randomNumber === 1) {
+                return 'Paper';
+            } else if (randomNumber === 2) {
+                return 'Scissors';
+            }
         }
         /* Program will take the input of the user player*/
 
