@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        
         /*Computer will generate a random number that will be equal to the result of either Rock, Paper, or Scissor */
         function computerPlay() {
             let randomNumber = Math.floor(Math.random()*3);
@@ -33,12 +34,11 @@
              alert('You have made an invalid selection. Please choose again.');
         }};
         
+
         /*The user input and the computer result will be compared and the result will be printed*/
         function playRound(player, computer){
             player = playerSelection();
             computer = computerPlay();
-            console.log(player);
-            console.log(computer);
             if (player === "Rock" && computer === "Scissors") {
                 return "Rock beats Scissors good job!";
             } else if (player === "Scissors" && computer === "Paper") {
@@ -54,11 +54,18 @@
             } else if (player === computer) {
                 return "It's a tie! Next time!";
             } else {
-                return "There is an error."
-            }
+                return "There is an error.";
+            };
+        };    
+        
+        /* Will run the playRound function a designated number of times */
+            function game() {
+                for (let i = 0; i < 5; i++) {
+                playRound();
+            };
         };
 
-
+ 
     </script>
 </head>
 <body>
