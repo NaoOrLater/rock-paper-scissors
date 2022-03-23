@@ -18,7 +18,7 @@
             }
         };
         
-        /* Program will take the input of the user player*/
+        /* Program will take the input of the user player and output the value in correct casing*/
         var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
         var makeChoiceLower = makeChoice.toLowerCase();
         function playerSelection() {
@@ -33,9 +33,33 @@
         }};
         
         /*The user input and the computer result will be compared and the result will be printed*/
+        function playRound(player, computer){
+            player = playerSelection();
+            computer = computerPlay();
+            console.log(player);
+            console.log(computer);
+            if (player === "Rock" && computer === "Scissors") {
+                return "Rock beats Scissors good job!";
+            } else if (player === "Scissors" && computer === "Paper") {
+                return "Scissors beats Paper good job!";
+            } else if (player === "Paper" && computer === "Rock") {
+                return "Paper beats Rock good job!";
+            } else if (player === "Paper" && computer === "Scissors") {
+                return "Paper gets beaten by Scissors you lose!";
+            } else if (player === "Scissors" && computer === "Rock") {
+                return "Scissors gets beaten by Rock you lose!";
+            } else if (player === "Rock" && computer === "Paper") {
+                return "Rock gets beaten by Paper you lose!";
+            } else if (player === computer) {
+                return "It's a tie! Next time!";
+            } else {
+                return "There is an error."
+            }
+        };
+
     </script>
 </head>
 <body>
     
 </body>
-</html>
+</html> 
