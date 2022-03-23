@@ -19,9 +19,10 @@
         };
         
         /* Program will take the input of the user player and output the value in correct casing*/
-        var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
-        var makeChoiceLower = makeChoice.toLowerCase();
+        
         function playerSelection() {
+            var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
+            var makeChoiceLower = makeChoice.toLowerCase();
             if (makeChoiceLower === "rock") {
             return 'Rock';
         } else if (makeChoiceLower === "paper") {
@@ -56,6 +57,7 @@
                 return "There is an error."
             }
         };
+
 
     </script>
 </head>
