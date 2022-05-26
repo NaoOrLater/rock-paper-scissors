@@ -1,2 +1,3 @@
 # rock-paper-scissors
-practicing JavaScript knowledge
+
+Practicing JavaScript knowledge through creating a Rock, Paper, Scissors application.

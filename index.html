@@ -1,73 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        
-        /*Computer will generate a random number that will be equal to the result of either Rock, Paper, or Scissor */
-        function computerPlay() {
-            let randomNumber = Math.floor(Math.random()*3);
-            if (randomNumber === 0) {
-                return 'Rock';
-            } else if (randomNumber === 1) {
-                return 'Paper';
-            } else if (randomNumber === 2) {
-                return 'Scissors';
-            }
-        };
-        
-        /* Program will take the input of the user player and output the value in correct casing*/
-        
-        function playerSelection() {
-            var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
-            var makeChoiceLower = makeChoice.toLowerCase();
-            if (makeChoiceLower === "rock") {
-            return 'Rock';
-        } else if (makeChoiceLower === "paper") {
-            return 'Paper';
-        } else if (makeChoiceLower === "scissors") {
-            return 'Scissors';
-        } else {
-             alert('You have made an invalid selection. Please choose again.');
-        }};
-        
+    <title>Rock, Paper, Scissors</title>
 
-        /*The user input and the computer result will be compared and the result will be printed*/
-        function playRound(player, computer){
-            
-            if (player === "Rock" && computer === "Scissors") {
-                return "Rock beats Scissors good job!";
-            } else if (player === "Scissors" && computer === "Paper") {
-                return "Scissors beats Paper good job!";
-            } else if (player === "Paper" && computer === "Rock") {
-                return "Paper beats Rock good job!";
-            } else if (player === "Paper" && computer === "Scissors") {
-                return "Paper gets beaten by Scissors you lose!";
-            } else if (player === "Scissors" && computer === "Rock") {
-                return "Scissors gets beaten by Rock you lose!";
-            } else if (player === "Rock" && computer === "Paper") {
-                return "Rock gets beaten by Paper you lose!";
-            } else if (player === computer) {
-                return "It's a tie! Next time!";
-            } else {
-                return "There is an error.";
-            };
-        };    
-        
-        /* Will run the playRound function a designated number of times */ 
-            function game() {
-                for (let i = 0; i < 5; i++) {
-                console.log(playRound(playerSelection(), computerPlay()));
-            };
-        };
-
- 
-    </script>
 </head>
+
 <body>
-    
+<p>Make your choice:</p>
+<br>
+<div id="buttons">
+  <button  class="btn rock">Rock</button>  
+  <button class="btn paper">Paper</button>
+  <button class="btn scissors">Scissors</button>
+</div>
+
+  <div id="results">
+
+  </div>
+
 </body>
+
 </html> 
+
+<script>
+        
+    /*Computer will generate a random number that will be equal to the result of either Rock, Paper, or Scissor */
+    function computerPlay() {
+        let randomNumber = Math.floor(Math.random()*3);
+        if (randomNumber === 0) {
+            return 'Rock';
+        } else if (randomNumber === 1) {
+            return 'Paper';
+        } else if (randomNumber === 2) {
+            return 'Scissors';
+        }
+    };
+    
+    /* Program will take the input of the user player and output the value in correct casing*/
+    
+    function playerSelection() {
+        var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
+        var makeChoiceLower = makeChoice.toLowerCase();
+        if (makeChoiceLower === "rock") {
+        return 'Rock';
+    } else if (makeChoiceLower === "paper") {
+        return 'Paper';
+    } else if (makeChoiceLower === "scissors") {
+        return 'Scissors';
+    } else {
+         alert('You have made an invalid selection. Please choose again.');
+    }};
+    
+
+    /*The user input and the computer result will be compared and the result will be printed*/
+    function playRound(player, computer){
+        
+        if (player === "Rock" && computer === "Scissors") {
+            return "Rock beats Scissors good job!";
+        } else if (player === "Scissors" && computer === "Paper") {
+            return "Scissors beats Paper good job!";
+        } else if (player === "Paper" && computer === "Rock") {
+            return "Paper beats Rock good job!";
+        } else if (player === "Paper" && computer === "Scissors") {
+            return "Paper gets beaten by Scissors you lose!";
+        } else if (player === "Scissors" && computer === "Rock") {
+            return "Scissors gets beaten by Rock you lose!";
+        } else if (player === "Rock" && computer === "Paper") {
+            return "Rock gets beaten by Paper you lose!";
+        } else if (player === computer) {
+            return "It's a tie! Next time!";
+        } else {
+            return "There is an error.";
+        };
+    };    
+    
+    /* Will run the playRound function a designated number of times 
+        function game() {
+            for (let i = 0; i < 5; i++) {
+            console.log(playRound(playerSelection(), computerPlay()));
+        };
+    };*/ 
+
+    let buttons = document.getElementById('buttons');
+
+    buttons.addEventListener('click', playerChoose);
+
+    function playerChoose(e) {
+        if(e.target.classList.contains('rock')) {
+            console.log('rock');
+        } else if (e.target.classList.contains('paper')) {
+            console.log('paper');
+        } else if (e.target.classList.contains('scissors')) {
+            console.log('scissors');
+        }
+    }
+    
+    
+
+</script>
