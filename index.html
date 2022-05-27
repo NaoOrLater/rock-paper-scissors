@@ -11,7 +11,6 @@
 
 <body>
 <p>Make your choice:</p>
-<br>
 <div id="buttons">
   <button  class="btn rock">Rock</button>  
   <button class="btn paper">Paper</button>
@@ -86,26 +85,41 @@
         };
     };*/ 
 
+    
+
     const buttons = document.getElementById('buttons');
     const results = document.getElementById('results');
     let resultsText = document.createElement('p');
 
 
 
-    buttons.addEventListener('click', playerSelection);
+    buttons.addEventListener('click', game);
 
     function playerSelection(e) {
         if(e.target.classList.contains('rock')) {
-            resultsText.textContent = 'Rock';
-            results.appendChild(resultsText);
+            // resultsText.textContent = 'Rock';
+            // results.appendChild(resultsText);
+            return 'Rock';
         } else if (e.target.classList.contains('paper')) {
-            resultsText.textContent = 'Paper';
-            results.appendChild(resultsText);
+            // resultsText.textContent = 'Paper';
+            // results.appendChild(resultsText);
+            return 'Paper';
         } else if (e.target.classList.contains('scissors')) {
-            resultsText.textContent = 'Scissors';
-            results.appendChild(resultsText);
+            // resultsText.textContent = 'Scissors';
+            // results.appendChild(resultsText);
+            return 'Scissors';
         }
-    }
+    };
+
+    function game(e) {
+        resultsText.textContent = playRound(playerSelection(e), computerPlay());
+        results.appendChild(resultsText);
+        resultsText.textContent = playRound(playerSelection(e), computerPlay());
+        results.appendChild(resultsText);resultsText.textContent = playRound(playerSelection(e), computerPlay());
+        results.appendChild(resultsText);
+
+        
+    };
     
     
 
