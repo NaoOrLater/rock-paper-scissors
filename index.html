@@ -40,8 +40,9 @@
         }
     };
     
-    /* Program will take the input of the user player and output the value in correct casing*/
-    
+    /* Program will take the input of the user player and output the value in correct casing
+        Old playerSelection function
+
     function playerSelection() {
         var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
         var makeChoiceLower = makeChoice.toLowerCase();
@@ -53,7 +54,7 @@
         return 'Scissors';
     } else {
          alert('You have made an invalid selection. Please choose again.');
-    }};
+    }}; */
     
 
     /*The user input and the computer result will be compared and the result will be printed*/
@@ -85,17 +86,24 @@
         };
     };*/ 
 
-    let buttons = document.getElementById('buttons');
+    const buttons = document.getElementById('buttons');
+    const results = document.getElementById('results');
+    let resultsText = document.createElement('p');
 
-    buttons.addEventListener('click', playerChoose);
 
-    function playerChoose(e) {
+
+    buttons.addEventListener('click', playerSelection);
+
+    function playerSelection(e) {
         if(e.target.classList.contains('rock')) {
-            console.log('rock');
+            resultsText.textContent = 'Rock';
+            results.appendChild(resultsText);
         } else if (e.target.classList.contains('paper')) {
-            console.log('paper');
+            resultsText.textContent = 'Paper';
+            results.appendChild(resultsText);
         } else if (e.target.classList.contains('scissors')) {
-            console.log('scissors');
+            resultsText.textContent = 'Scissors';
+            results.appendChild(resultsText);
         }
     }
     
