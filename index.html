@@ -26,7 +26,15 @@
 </html> 
 
 <script>
-        
+
+    let playerScore = 0;
+    let computerScore = 0;
+    let roundResult = '';
+
+    const buttons = document.getElementById('buttons');
+    const results = document.getElementById('results');
+    let resultsText = document.createElement('p');
+
     /*Computer will generate a random number that will be equal to the result of either Rock, Paper, or Scissor */
     function computerPlay() {
         let randomNumber = Math.floor(Math.random()*3);
@@ -35,6 +43,16 @@
         } else if (randomNumber === 1) {
             return 'Paper';
         } else if (randomNumber === 2) {
+            return 'Scissors';
+        }
+    };
+
+    function playerSelection(e) {
+        if(e.target.classList.contains('rock')) {
+            return 'Rock';
+        } else if (e.target.classList.contains('paper')) {
+            return 'Paper';
+        } else if (e.target.classList.contains('scissors')) {
             return 'Scissors';
         }
     };
@@ -59,18 +77,14 @@
     /*The user input and the computer result will be compared and the result will be printed*/
     function playRound(player, computer){
         
-        if (player === "Rock" && computer === "Scissors") {
-            return "Rock beats Scissors good job!";
-        } else if (player === "Scissors" && computer === "Paper") {
-            return "Scissors beats Paper good job!";
-        } else if (player === "Paper" && computer === "Rock") {
-            return "Paper beats Rock good job!";
-        } else if (player === "Paper" && computer === "Scissors") {
-            return "Paper gets beaten by Scissors you lose!";
-        } else if (player === "Scissors" && computer === "Rock") {
-            return "Scissors gets beaten by Rock you lose!";
-        } else if (player === "Rock" && computer === "Paper") {
-            return "Rock gets beaten by Paper you lose!";
+        if ((player === "Rock" && computer === "Scissors") || (player === "Scissors" && computer === "Paper") || (player === "Paper" && computer === "Rock")) {
+            playerScore++;
+            return roundResult = `The player chose: ${player}. 
+            The computer chose: ${computer}. The player wins! The player score is: ${playerScore}. The computer score is ${computerScore}.`
+        } else if ((player === "Paper" && computer === "Scissors") || (player === "Scissors" && computer === " Rock") || (player === "Rock" && computer === "Paper")) {
+            computerScore++;
+            return roundResult = `The player chose: ${player}. 
+            The computer chose: ${computer}. The computer wins :( The player score is: ${playerScore}. The computer score is ${computerScore}.`
         } else if (player === computer) {
             return "It's a tie! Next time!";
         } else {
@@ -85,42 +99,11 @@
         };
     };*/ 
 
-    
-
-    const buttons = document.getElementById('buttons');
-    const results = document.getElementById('results');
-    let resultsText = document.createElement('p');
-
-
-
     buttons.addEventListener('click', game);
-
-    function playerSelection(e) {
-        if(e.target.classList.contains('rock')) {
-            // resultsText.textContent = 'Rock';
-            // results.appendChild(resultsText);
-            return 'Rock';
-        } else if (e.target.classList.contains('paper')) {
-            // resultsText.textContent = 'Paper';
-            // results.appendChild(resultsText);
-            return 'Paper';
-        } else if (e.target.classList.contains('scissors')) {
-            // resultsText.textContent = 'Scissors';
-            // results.appendChild(resultsText);
-            return 'Scissors';
-        }
-    };
 
     function game(e) {
         resultsText.textContent = playRound(playerSelection(e), computerPlay());
         results.appendChild(resultsText);
-        resultsText.textContent = playRound(playerSelection(e), computerPlay());
-        results.appendChild(resultsText);resultsText.textContent = playRound(playerSelection(e), computerPlay());
-        results.appendChild(resultsText);
-
-        
     };
     
-    
-
 </script>
