@@ -31,9 +31,13 @@
     let computerScore = 0;
     let roundResult = '';
 
-    const buttons = document.getElementById('buttons');
+    let buttons = document.querySelectorAll('.btn');
     const results = document.getElementById('results');
-    let resultsText = document.createElement('p');
+    
+    const resetButton = document.createElement('button');
+    resetButton.classList.add('reset');
+    
+    const resultsText = document.createElement('p');
 
     /*Computer will generate a random number that will be equal to the result of either Rock, Paper, or Scissor */
     function computerPlay() {
@@ -54,12 +58,13 @@
             return 'Paper';
         } else if (e.target.classList.contains('scissors')) {
             return 'Scissors';
+        } else {
+            return
         }
     };
     
     /* Program will take the input of the user player and output the value in correct casing
         Old playerSelection function
-
     function playerSelection() {
         var makeChoice = window.prompt("Please make a choice of Rock, Paper, or Scissors.");
         var makeChoiceLower = makeChoice.toLowerCase();
@@ -79,16 +84,14 @@
         
         if ((player === "Rock" && computer === "Scissors") || (player === "Scissors" && computer === "Paper") || (player === "Paper" && computer === "Rock")) {
             playerScore++;
-            return roundResult = `The player chose: ${player}. 
-            The computer chose: ${computer}. The player wins! The player score is: ${playerScore}. The computer score is ${computerScore}.`
-        } else if ((player === "Paper" && computer === "Scissors") || (player === "Scissors" && computer === " Rock") || (player === "Rock" && computer === "Paper")) {
+            return roundResult = `The player wins! The player chose: ${player}. The computer chose: ${computer}. The player score is: ${playerScore}. The computer score is ${computerScore}.`
+        } else if ((player === "Paper" && computer === "Scissors") || (player === "Scissors" && computer === "Rock") || (player === "Rock" && computer === "Paper")) {
             computerScore++;
-            return roundResult = `The player chose: ${player}. 
-            The computer chose: ${computer}. The computer wins :( The player score is: ${playerScore}. The computer score is ${computerScore}.`
+            return roundResult = ` The computer wins :( The player chose: ${player}. The computer chose: ${computer}. The player score is: ${playerScore}. The computer score is ${computerScore}.`
         } else if (player === computer) {
-            return "It's a tie! Next time!";
+            return `It is a tie! The player chose: ${player}. The computer chose: ${computer}. The player score is: ${playerScore}. The computer score is ${computerScore}.`;
         } else {
-            return "There is an error.";
+            return;
         };
     };    
     
@@ -99,11 +102,25 @@
         };
     };*/ 
 
-    buttons.addEventListener('click', game);
+    for (let button of buttons) {
+        button.addEventListener('click', game);
+    };
 
     function game(e) {
         resultsText.textContent = playRound(playerSelection(e), computerPlay());
         results.appendChild(resultsText);
+
+        if (playerScore === 5) {
+            resultsText.textContent = 'The player wins 5 rounds!! Congratulations!';
+            results.appendChild(resultsText);
+            playerScore = 0;
+            computerScore = 0;
+        } else if (computerScore === 5) {
+            resultsText.textContent = 'The computer wins 5 rounds!! Try again next time!!';
+            results.appendChild(resultsText);
+            playerScore = 0;
+            computerScore = 0;
+        }
     };
     
 </script>
